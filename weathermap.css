@@ -1,3 +1,9 @@
+/* Weathermap screen rendering  */
+#weathermap-js-container {
+  width: 900px;
+  height: 450px;
+}
+
 /*
   Header & Footer / Navigation styling
 */
@@ -93,6 +99,18 @@ section .row img {
   margin: 0 0 30px;
 }
 
+
+p.supportingP {
+	  font-size: 24px;
+
+	
+}
+
+
+
+
+
+
 /* CSS Styling for Weather Map HTML */
 body {
 	background-color: #222222
@@ -131,20 +149,8 @@ p.navLink{
 }
 
 
-div.headerContainer {
 
 
-
-}
-
-div.bodyMainContainer {
-
-
-
-}
-div.navigationContainer {
-
-}
 
 /* Uvisited link */
 a:link {
