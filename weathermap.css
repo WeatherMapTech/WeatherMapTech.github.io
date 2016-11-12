@@ -1,0 +1,171 @@
+/*
+  Header & Footer / Navigation styling
+*/
+
+header{
+	padding: 20px ;
+	border: 0px solid #000000;
+	width:100%;
+	margin: 0;
+}
+
+header .row,
+footer .row{
+	display: flex;
+	align-items: center;
+	
+}
+
+header h1 {
+  font-weight: 700;
+  margin: 0;
+}
+
+header nav {
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+header p {
+  padding: 0 20px;
+  margin: 0;
+}
+
+
+footer {
+  font-size: 12px;
+  padding: 20px 0;
+}
+
+footer .col-sm-8 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+footer ul {
+  list-style: none;
+}
+
+footer li img {
+  width: 32px;
+  height: 32px;
+}
+
+
+/*
+ Jumbotron styling 
+*/
+
+.jumbotron {
+  display: flex;
+  align-items: center;
+  background-image: url('http://imgur.com/1Q5hDqh');
+  background-size: cover;
+  color: #ffffff;
+  height: 256px;
+  text-shadow: 0.25px 0.25px 0.25px #000000;
+}
+
+.jumbotron h2 {
+  font-size: 60px;
+  font-weight: 700;
+  margin: 0;
+  color: #fff;
+}
+
+.jumbotron h3 {
+  margin: 0 0 20px;
+  color: #fff;
+}
+
+
+
+/* 
+  Supporting Content Styling
+*/
+section .row img {
+  margin: 0 0 30px;
+  width: 100%;
+}
+
+.col-md-6 {
+  margin: 0 0 30px;
+}
+
+/* CSS Styling for Weather Map HTML */
+body {
+	background-color: #222222
+}
+h1 {
+    color: #CCCCCC;
+    text-align: center;
+}
+h2 {
+    color: #BBBBBB;
+    text-align: left;
+}
+h3 {
+    color: #AAAAAA;
+    text-align: left;
+}
+h3.navTitle{
+    color: #AAAAAA;
+    text-align: left;
+}
+
+p {
+    font-family: "Times New Roman";
+    font-size: 20px;
+	color: #AAAAAA
+}
+p.centeredP {
+    font-family: "Times New Roman";
+    font-size: 20px;
+	color: #AAAAAA;
+	text-align: center;
+}
+p.navLink{
+    display: inline;
+	padding: 10px;
+}
+
+
+div.headerContainer {
+
+
+
+}
+
+div.bodyMainContainer {
+
+
+
+}
+div.navigationContainer {
+
+}
+
+/* unvisited link */
+a:link {
+    color: #FF0000;
+	text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+    color: #00FF00;
+	text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+    color: #FFFF00;
+	text-decoration: underline;
+}
+
+/* selected link */
+a:active {
+    color: #0000FF;
+	text-decoration: underline;
+}
