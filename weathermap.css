@@ -60,10 +60,8 @@ footer li img {
 .jumbotron {
   display: flex;
   align-items: center;
-  background-image: url('http://imgur.com/1Q5hDqh');
-  background-size: cover;
-  color: #ffffff;
-  height: 1800px;
+  color: #222222;
+  height: 128px;
   text-shadow: 0.25px 0.25px 0.25px #000000;
 }
 
@@ -71,18 +69,20 @@ footer li img {
   font-size: 60px;
   font-weight: 700;
   margin: 0;
-  color: #fff;
+  color: #222222;
 }
 
 .jumbotron h3 {
   margin: 0 0 20px;
-  color: #fff;
+  color: #222222;
 }
 
 
 
 /* 
   Supporting Content Styling
+    background-image: img/wm/Cooridnates_3600x1800_Earth_EX_000.png;
+  background-size: cover;
 */
 section .row img {
   margin: 0 0 30px;
@@ -146,25 +146,25 @@ div.navigationContainer {
 
 }
 
-/* unvisited link */
+/* Uvisited link */
 a:link {
     color: #FF0000;
 	text-decoration: none;
 }
 
-/* visited link */
+/* Visited link */
 a:visited {
     color: #00FF00;
 	text-decoration: none;
 }
 
-/* mouse over link */
+/* Mouse over link */
 a:hover {
     color: #FFFF00;
 	text-decoration: underline;
 }
 
-/* selected link */
+/* Selected link */
 a:active {
     color: #0000FF;
 	text-decoration: underline;
