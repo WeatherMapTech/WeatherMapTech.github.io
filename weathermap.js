@@ -515,7 +515,7 @@ window.onload = function() {
 			if(playerLon >=1)
 			{
 				playerLon -=1;
-				playerCoordsTrans -=1;
+				playerLonTrans -=1;
 			}
 			
 			playerCoords = "LatitudeRAW: " + playerLat + ", LongitudeRAW: " + playerLon;

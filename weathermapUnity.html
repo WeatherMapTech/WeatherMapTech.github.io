@@ -26,7 +26,214 @@
 	<section class="container">
       <div class="row">
         <figure class="col-sm-12">
-          <p class ="supportingP">IMPORTANT INFO will go here</p>
+          <p class ="supportingP">Unity implementation in development.</p>
+		  <p class ="supportingP">C# NOAA_DataStriper .</p>
+		  <p class ="supportingP">Reads in a csv and gets temperature information from <a href="http://www.ncdc.noaa.gov/">ncdc.noaa.gov</a></p>
+
+		  <pre>using UnityEngine;
+using System.Collections;
+
+public class NOAA_DataStriper : MonoBehaviour {
+    public int dataCount = 89100;
+
+    private float[] _temperatures;
+
+    private string _csvName = "/CSVs/WD_2011_11_11.csv";
+    private string _csvPath;
+    private string[] _dataStrings;
+    private string[] _reducedData;
+
+    private int _catCountTemp = 256;
+    private int _categoryCount;
+    private string[] _categories;
+
+    private string _path;
+    private string _fileName = "NOAA_WD_2016_11_11_Temps.txt";
+
+    void Awake()
+    {
+        _path = Application.dataPath + _fileName;   // set path to application datapath
+        _csvPath = Application.dataPath + _csvName;
+        InitializeDatas();
+        CountCategories();
+        SetDataEx1();
+        ConvetDatasToString();
+    }
+    // Use this for initialization
+    void Start()
+    {
+        
+        ReduceCSVToTemperatures();
+        ExWriteToFile();
+
+
+    }
+
+
+    private void InitializeDatas()
+    {
+        _temperatures = new float[dataCount];
+
+        _dataStrings = new string[dataCount];
+        _reducedData = new string[dataCount];
+
+
+
+
+
+
+        Debug.Log("Intialized Data");
+    }
+    private void SetDataEx1()
+    {
+        for (int i = 0; i < dataCount; i++)
+        {
+            _temperatures[i] = (float)-6f;
+        }
+    }
+
+    private void ConvetDatasToString()
+    {
+        for (int i = 0; i < dataCount; i++)
+        {
+            _dataStrings[i] = i + ", " + _temperatures[i] + ", \n";
+        }
+    }
+
+    private void ExWriteToFile()
+    {
+        // for(int i )
+        //
+        // System.IO.File.WriteAllLines(_path, _dataStrings);
+        // Debug.Log("Written File");
+         System.IO.File.WriteAllLines(_path, _reducedData);
+         Debug.Log("Written Reduced File");
+        
+    }
+
+    // Update is called once per frame
+    private void ReduceCSVToTemperatures()
+    {
+        int i = 0;
+        string line;
+
+        // Read the file and display it line by line.
+        System.IO.StreamReader file =
+            new System.IO.StreamReader(_csvPath);
+        while ((line = file.ReadLine()) != null)
+        {
+            // category case
+            if (i == 0)
+            {
+
+
+            }
+            _dataStrings[i] = line;
+            _temperatures[i] = 0;
+           // _dataStrings[i] = i + ", " + _temperatures[i] + ", \n";
+            //Console.WriteLine(line);      // from MSDN
+            i++;
+
+
+        }
+
+        file.Close();
+
+        // Suspend the screen.
+        // Console.ReadLine();       // from MSDN
+        Debug.Log("LineCount = " + i);
+        // IterateToTemperatures(); // TODO: FIX ME, doesnt work right now
+        Debug.Log("Reduced Temperatures");
+    }
+
+    // MonthlyMaximumTemp = category 48
+    private void IterateToTemperatures()
+    {
+        int currentComma = 0;
+        int colMax = 2035;
+        int targetCategory = 47; // do 0 based index like
+        int maxTargetLength = 48;
+        string tmpString = "";
+        for(int i = 0; i < _dataStrings.Length; i ++)
+        {
+            currentComma = 0;
+            for (int j = 0; j < colMax; j++)
+            {
+                if(_dataStrings[i][j] == ',')
+                {
+                    currentComma++;
+                }
+                
+                if(currentComma == targetCategory)
+                {
+                    // we have reached target category, so lets iterate trhoguht this string starting at j, till we reach another comma
+                    // takes every kth value of datastrings to put in reduced data
+                    for(int k = j; k < (j+ maxTargetLength); k ++)
+                    {
+                        tmpString += _dataStrings[k];
+                        Debug.Log("DataString [" + i + "]k+ = " + k);
+                    }
+                    _reducedData[i] = tmpString;
+                    break; // break out IS NECESSARY 
+                }
+            }
+            
+        }
+        Debug.Log("IteratedToTemperatures");
+
+    }
+    private void CountCategories()
+    {
+        int i = 0;
+        string line;
+        int lineCount = 0;
+        int commaCount = 0;
+        string compareLine = "" ;
+        // Read the file and display it line by line.
+        System.IO.StreamReader file =
+            new System.IO.StreamReader(_csvPath);
+
+        while ((line = file.ReadLine()) != null)
+        {
+            // category case
+            if (i == 0)
+            {
+                compareLine = line;
+                lineCount = line.Length;
+                
+
+            }
+            else break;
+
+
+        }
+
+        file.Close();
+
+        // count commas... from line
+
+        for(int j = 0; j < lineCount; j ++)
+        {
+            if (compareLine[j] == ',')
+            {
+                commaCount++;
+            }
+          
+        }
+
+
+
+        // Suspend the screen.
+        // Console.ReadLine();       // from MSDN
+        Debug.Log("loop Count = " + i);
+        Debug.Log("comma Count = " + commaCount);
+        Debug.Log("Categories Count = " + lineCount);
+        Debug.Log("CountCategories");
+    }
+}
+
+		  </code>
+
         </figure>      
       </div>
     </section>
