@@ -68,11 +68,10 @@ var TEMP_DANGERHOT = 54	;		// TOO HOT is greater than very hot      			54 and ab
 //var mouseY = event.clientY;     // Get the vertical coordinate
 var mouseX;    // Get the horizontal coordinate
 var mouseY;   // Get the vertical coordinate
-//var mouseCoords = "X coords: " + x + ", Y coords: " + y;
 var mouseCoords;
 
 var playerSize = 0;
- var playerSizeMAX = 135;
+var playerSizeMAX = 135;
 var playerLat = 0;	// is 0 to 179		TODO: check if is north or south and convert to 0to90, right now 0 to 90 is north, 91 to 180 is south
 var playerLon = 0;	// is 0 to 360		'' east or west
 var playerLatTrans = 0;	// is 0 to 179		TODO: check if is north or south and convert to 0to90, right now 0 to 90 is north, 91 to 180 is south
@@ -112,12 +111,12 @@ var flipLat;
 		 //console.log("Temperatures(0,1) = " + temperatures[0][1] );
 	
 		 console.log("Initialized");
-		 playerLat = 39;
-		 playerLon = 96;
+		 //playerLat = 39;
+		 //playerLon = 96;
 		// playerLatTrans =90-39;
 		// playerLonTrans = 180-96;
-		 playerLatTrans =90-39;
-		 playerLonTrans = 180-96;
+		// playerLatTrans =90-39;
+		 //playerLonTrans = 180-96;
 		 
     };
   
@@ -511,7 +510,7 @@ window.onload = function() {
       case 37: // left 
         if(true)
 		{
-			console.log("Left key down");
+			//console.log("Left key down");
 			if(playerLon >=1)
 			{
 				playerLon -=1;
@@ -521,8 +520,8 @@ window.onload = function() {
 			playerCoords = "LatitudeRAW: " + playerLat + ", LongitudeRAW: " + playerLon;
 			playerCoordsTrans = "LatitudeTrans: " + playerLatTrans + ", LongitudeTrans: " + playerLonTrans;
 
-			console.log(playerCoords);
-			console.log(playerCoordsTrans);
+			//console.log(playerCoords);
+			//console.log(playerCoordsTrans);
 			increasePlayerDrawSize();
 			
 			renderPlayerCoords();
@@ -533,7 +532,7 @@ window.onload = function() {
       case 38: // up
         if(true)
 		{
-			console.log("UP key down");
+			//console.log("UP key down");
 			if(playerLat >=1)
 			{
 				playerLat -=1;
@@ -551,7 +550,7 @@ window.onload = function() {
       case 39: // right
         if(true)
 		{
-			console.log("Right key down");
+			//console.log("Right key down");
 			if(playerLon <=(longitudeCount-1))
 			{
 				playerLon +=1;
@@ -570,7 +569,7 @@ window.onload = function() {
       case 40: // down
         if(true)
 		{
-			console.log("Down key down");
+			//console.log("Down key down");
 			if(playerLat <=(latitudeCount-1))
 			{
 				playerLat +=1;
@@ -587,7 +586,7 @@ window.onload = function() {
 		case 66: // b
         if(true)
 		{
-			console.log("B key down");
+			//console.log("B key down");
 			
 
 		}
