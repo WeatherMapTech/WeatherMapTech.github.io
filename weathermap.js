@@ -75,7 +75,10 @@ var playerSize = 0;
  var playerSizeMAX = 135;
 var playerLat = 0;	// is 0 to 179		TODO: check if is north or south and convert to 0to90, right now 0 to 90 is north, 91 to 180 is south
 var playerLon = 0;	// is 0 to 360		'' east or west
+var playerLatTrans = 0;	// is 0 to 179		TODO: check if is north or south and convert to 0to90, right now 0 to 90 is north, 91 to 180 is south
+var playerLonTrans = 0;	// is 0 to 360		'' east or west
 var playerCoords; 
+var playerCoordsTrans;
  
 var flipLat; 
 
@@ -109,7 +112,12 @@ var flipLat;
 		 //console.log("Temperatures(0,1) = " + temperatures[0][1] );
 	
 		 console.log("Initialized");
-
+		 playerLat = 39;
+		 playerLon = 96;
+		// playerLatTrans =90-39;
+		// playerLonTrans = 180-96;
+		 playerLatTrans =90-39;
+		 playerLonTrans = 180-96;
 		 
     };
   
@@ -305,7 +313,7 @@ var flipLat;
   
 
   
-    // render bg map images
+    // render bg map images, not used atm
   function renderImages()
   {
 	  screenCtx.globalAlpha = 1.0;
@@ -463,7 +471,7 @@ var TEMP_DANGERHOT = 54			// TOO HOT is greater than very hot      			54 and abo
 	  */
 	  //render();
 	  screenCtx.beginPath();
-    screenCtx.arc(playerLon*pixelsPerLAT, playerLat*pixelsPerLAT, playerSize, 0, Math.PI * 2);
+    screenCtx.arc(playerLonTrans*pixelsPerLAT, playerLatTrans*pixelsPerLAT, playerSize, 0, Math.PI * 2);
     screenCtx.fill();
 	// currently just draws over.. need to rerender.... but is expensive atm
 
@@ -480,6 +488,12 @@ var TEMP_DANGERHOT = 54			// TOO HOT is greater than very hot      			54 and abo
 	  {
 		  playerSize = 0;
 	  }
+  }
+  
+  // on user press of b, builds demo, i.e. sets pixel values again?
+  function buildDemo()
+  {
+	  
   }
   
   
@@ -501,12 +515,18 @@ window.onload = function() {
 			if(playerLon >=1)
 			{
 				playerLon -=1;
+				playerCoordsTrans -=1;
 			}
 			
 			playerCoords = "LatitudeRAW: " + playerLat + ", LongitudeRAW: " + playerLon;
+			playerCoordsTrans = "LatitudeTrans: " + playerLatTrans + ", LongitudeTrans: " + playerLonTrans;
+
 			console.log(playerCoords);
+			console.log(playerCoordsTrans);
 			increasePlayerDrawSize();
+			
 			renderPlayerCoords();
+			
 		}
         event.preventDefault();
         break;
@@ -517,9 +537,13 @@ window.onload = function() {
 			if(playerLat >=1)
 			{
 				playerLat -=1;
+				playerLatTrans -=1;
 			}
 			playerCoords = "LatitudeRAW: " + playerLat + ", LongitudeRAW: " + playerLon;
-			console.log(playerCoords);
+			playerCoordsTrans = "LatitudeTrans: " + playerLatTrans + ", LongitudeTrans: " + playerLonTrans;
+
+			//console.log(playerCoords);
+			//console.log(playerCoordsTrans);
 			//renderPlayerCoords();
 		}
         event.preventDefault();
@@ -531,8 +555,11 @@ window.onload = function() {
 			if(playerLon <=(longitudeCount-1))
 			{
 				playerLon +=1;
+				playerLonTrans +=1;
 			}
 			playerCoords = "LatitudeRAW: " + playerLat + ", LongitudeRAW: " + playerLon;
+			playerCoordsTrans = "LatitudeTrans: " + playerLatTrans + ", LongitudeTrans: " + playerLonTrans;
+
 			//renderPlayerCoords();
 			//render();
 		}
@@ -547,10 +574,22 @@ window.onload = function() {
 			if(playerLat <=(latitudeCount-1))
 			{
 				playerLat +=1;
+				playerLatTrans +=1;
 			}
 			playerCoords = "LatitudeRAW: " + playerLat + ", LongitudeRAW: " + playerLon;
-			//renderPlayerCoords();
-			//renderFirst();
+			playerCoordsTrans = "LatitudeTrans: " + playerLatTrans + ", LongitudeTrans: " + playerLonTrans;
+
+			;
+		}
+        event.preventDefault();
+        break;
+		
+		case 66: // b
+        if(true)
+		{
+			console.log("B key down");
+			
+
 		}
         event.preventDefault();
         break;
