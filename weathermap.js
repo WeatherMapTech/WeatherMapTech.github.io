@@ -71,12 +71,14 @@ var mouseY;   // Get the vertical coordinate
 //var mouseCoords = "X coords: " + x + ", Y coords: " + y;
 var mouseCoords;
 
- 
+var playerSize = 0;
+ var playerSizeMAX = 135;
 var playerLat = 0;	// is 0 to 179		TODO: check if is north or south and convert to 0to90, right now 0 to 90 is north, 91 to 180 is south
 var playerLon = 0;	// is 0 to 360		'' east or west
 var playerCoords; 
  
 var flipLat; 
+
  
  
 // Initialize function
@@ -461,14 +463,24 @@ var TEMP_DANGERHOT = 54			// TOO HOT is greater than very hot      			54 and abo
 	  */
 	  //render();
 	  screenCtx.beginPath();
-    screenCtx.arc(playerLon*pixelsPerLAT, playerLat*pixelsPerLAT, 30, 0, Math.PI * 2);
+    screenCtx.arc(playerLon*pixelsPerLAT, playerLat*pixelsPerLAT, playerSize, 0, Math.PI * 2);
     screenCtx.fill();
 	// currently just draws over.. need to rerender.... but is expensive atm
 
   };
   
   
-  
+  function increasePlayerDrawSize()
+  {
+	  if(playerSize < playerSizeMAX)
+	  {
+		  playerSize ++;
+	  }
+	  else
+	  {
+		  playerSize = 0;
+	  }
+  }
   
   
   
@@ -493,6 +505,7 @@ window.onload = function() {
 			
 			playerCoords = "LatitudeRAW: " + playerLat + ", LongitudeRAW: " + playerLon;
 			console.log(playerCoords);
+			increasePlayerDrawSize();
 			renderPlayerCoords();
 		}
         event.preventDefault();
